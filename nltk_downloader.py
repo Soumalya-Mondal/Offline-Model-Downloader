@@ -144,3 +144,61 @@ if __name__ == '__main__':
             except Exception as error:
                 print(f'ERROR - [S05-F] - {str(error)}')
     ########################################################################
+
+    ########################## For "wordnet" Data ##########################
+    if (NLTK_DATA_FOLDER_PRESENT_STATUS):
+        # define constant
+        WORDNET_DATA_FILE_PRESENT_STAUS = False
+
+        # define "wordnet.zip" file path
+        wordnet_nltk_data_zip_file_path = Path(nltk_data_folder_path) / 'corpora' / 'wordnet.zip'
+
+        # check if old "wordnet.zip" file is present:S06-A
+        try:
+            if (wordnet_nltk_data_zip_file_path.exists()):
+                # calling "delete_file" function
+                if (delete_file(file_path = wordnet_nltk_data_zip_file_path)):
+                    print('INFO - [S06-A] - "wordnet.zip" Old File Deleted')
+                else:
+                    print('ERROR - [S06-A] - "wordnet.zip" Old File Not Deleted; Manual Intervention Is Required, Hence Stop Execution')
+                    sys.exit(1)
+        except Exception as error:
+            print(f'ERROR - [S06-A] - {str(error)}')
+
+        # downloading "wordnet" data from "NLTK":S06-B
+        try:
+            nltk.download('wordnet', download_dir = nltk_data_folder_path)
+        except Exception as error:
+            print(f'ERROR - [S06-B] - {str(error)}')
+
+        # check if "wordnet.zip" file created:S06-C
+        try:
+            if (wordnet_nltk_data_zip_file_path.exists()):
+                WORDNET_DATA_FILE_PRESENT_STAUS = True
+                print('SUCCESS - [S06-C] - "wordnet.zip" Downloaded Successfully')
+            else:
+                WORDNET_DATA_FILE_PRESENT_STAUS = False
+                print('ERROR - [S06-C] - "wordnet.zip" Not Downloaded Successfully, Hence Stop Execution')
+                sys.exit(1)
+        except Exception as error:
+            print(f'ERROR - [S06-C] - {str(error)}')
+
+        # import "nltk.corpus" module:S06-D
+        if (WORDNET_DATA_FILE_PRESENT_STAUS):
+            try:
+                from nltk.corpus import wordnet
+            except Exception as error:
+                print(f'ERROR - [S06-D] - {str(error)}')
+
+        # load "wordnet.zip" data to check:S06-E
+        if (WORDNET_DATA_FILE_PRESENT_STAUS):
+            try:
+                synsets = wordnet.synsets('example')
+                print('SUCCESS - [S06-E] - "wordnet.zip" Data Downloaded And Loaded Successfully')
+            except LookupError:
+                print('ERROR - [S06-E] - "wordnet.zip" Data Not Found Or Corrupted, Hence Stop Execution')
+                sys.exit(1)
+            except Exception as error:
+                print(f'ERROR - [S06-E] - {str(error)}')
+                sys.exit(1)
+    ########################################################################
