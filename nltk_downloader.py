@@ -73,7 +73,7 @@ if __name__ == '__main__':
 
     ######################### For "stopwords" Data #########################
     if (NLTK_DATA_FOLDER_PRESENT_STATUS):
-        print('\n' + '~' * 50)
+        print('\n' + '~' * 61)
         # define constant
         STOPWORDS_DATA_FOLDER_PRESENT_STATUS = False
         STOPWORDS_DATA_LOAD_STATUS = False
@@ -144,12 +144,12 @@ if __name__ == '__main__':
                     print('INFO    - "stopwords.zip" File Not Deleted, Hence Manual Intervention Is Required')
             except Exception as error:
                 print(f'ERROR - [S05-F] - {str(error)}')
-        print('~' * 50)
+        print('~' * 61)
     ########################################################################
 
     ########################## For "wordnet" Data ##########################
     if (NLTK_DATA_FOLDER_PRESENT_STATUS):
-        print('\n' + '~' * 50)
+        print('\n' + '~' * 63)
         # define constant
         WORDNET_DATA_FILE_PRESENT_STAUS = False
 
@@ -204,12 +204,12 @@ if __name__ == '__main__':
             except Exception as error:
                 print(f'ERROR - [S06-E] - {str(error)}')
                 sys.exit(1)
-        print('~' * 50)
+        print('~' * 63)
     ########################################################################
 
     ########################### For "punkt" Data ###########################
     if (NLTK_DATA_FOLDER_PRESENT_STATUS):
-        print('\n' + '~' * 50)
+        print('\n' + '~' * 60)
         # define constant
         PUNKT_DATA_FOLDER_PRESENT_STATUS = False
         PUNKT_DATA_LOAD_STATUS = False
@@ -282,5 +282,5 @@ if __name__ == '__main__':
                     print('INFO    - "punkt.zip" File Not Deleted, Hence Manual Intervention Is Required')
             except Exception as error:
                 print(f'ERROR - [S07-F] - {str(error)}')
-    print('~' * 50)
+    print('~' * 60)
     ########################################################################
