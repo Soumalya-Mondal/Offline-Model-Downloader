@@ -24,6 +24,8 @@ if __name__ == '__main__':
                 return True
             else:
                 return False
+        else:
+            return False
 
     # define "delete_folder" function
     def delete_folder(folder_path: Path) -> bool: #type: ignore
@@ -36,6 +38,8 @@ if __name__ == '__main__':
                 return True
             else:
                 return False
+        else:
+            return False
     ###########################################################################
 
     # define folder path:S02
