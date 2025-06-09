@@ -1,3 +1,7 @@
+# define model_download function
+def model_download(model_name: str, model_type: str) -> bool: #type: ignore
+    pass
+
 # define main function
 if __name__ == '__main__':
     # importing python module:S01
@@ -101,12 +105,25 @@ if __name__ == '__main__':
             # define empty available model map dict
             available_model_map = {}
             # printing classification banner
-            print(f"\n{'~' * 15} You choose {classification_name} Classification {'~' * 15}")
+            print(f"\n{'~' * 15} You choose \"{classification_name}\" Classification {'~' * 15}")
             # loop thorugh all the models with label
             for idx, model_name in enumerate(sorted_selected_available_models):
+                model_type = selected_available_models[model_name]
                 available_model_map[chr(65 + idx)] = model_name
                 print(f"[INFO]  - ({chr(65 + idx)}) - {model_name}")
             # taking model name input from user
             model_choice_user_input = input("\n[INPUT] - Choose A Model To Download (e.g., A, B, C): ").strip().upper()
     except Exception as error:
         print(f'ERROR - [S04] - {str(error)}')
+
+    # check user input for model:S05
+    try:
+        if (str(model_choice_user_input) == ''):
+            print('ERROR - You Choose Wrong Option, Hence Stop Execution')
+            sys.exit(1)
+        else:
+            # loop through all the avilable_model_map
+            if model_choice_user_input in available_model_map:
+                print(f'You Choose Model: {available_model_map[model_choice_user_input]}\tType: {selected_available_models[available_model_map[model_choice_user_input]]}')
+    except Exception as error:
+        print(f'ERROR - [S05] - {str(error)}')
